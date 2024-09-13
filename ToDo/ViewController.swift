@@ -53,6 +53,13 @@ class ViewController: UIViewController {
             maker.trailing.equalToSuperview().inset(15)
             maker.centerY.equalTo(todayTasksLabel.snp.bottom)
         }
+        
+        let todoView = ToDoView()
+        self.view.addSubview(todoView)
+        todoView.snp.makeConstraints { maker in
+            maker.leading.trailing.bottom.equalToSuperview()
+            maker.top.equalTo(todayDateLabel.snp.bottom).offset(15)
+        }
     }
 
 }
