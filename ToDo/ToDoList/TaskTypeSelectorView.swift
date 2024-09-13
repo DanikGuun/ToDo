@@ -9,9 +9,11 @@ import Foundation
 import UIKit
 
 class TaskTypeSelectorView: UIView{
+    
+    private var labels: [BadgeLabelView] = []
+    
     convenience init(){
         self.init(frame: .zero)
-        self.backgroundColor = .systemGray6
     
         let allTasksLabel = BadgeLabelView()
         allTasksLabel.labelText = "Все"
@@ -22,6 +24,9 @@ class TaskTypeSelectorView: UIView{
             maker.top.bottom.equalToSuperview()
             maker.width.equalToSuperview().multipliedBy(0.19)
         }
+        labels.append(allTasksLabel)
+        allTasksLabel.addAction(UIAction(handler: { self.typeSelected(action: $0, type: .all) }), for: .touchUpInside)
+        allTasksLabel.isSelected = true
         
         let separator = UIView()
         self.addSubview(separator)
@@ -42,6 +47,8 @@ class TaskTypeSelectorView: UIView{
             maker.top.bottom.equalToSuperview()
             maker.width.equalToSuperview().multipliedBy(0.27)
         }
+        labels.append(closedTasksLabel)
+        closedTasksLabel.addAction(UIAction(handler: { self.typeSelected(action: $0, type: .closed) }), for: .touchUpInside)
         
         let openTasksLabel = BadgeLabelView()
         openTasksLabel.labelText = "Завершенные"
@@ -52,5 +59,17 @@ class TaskTypeSelectorView: UIView{
             maker.top.bottom.equalToSuperview()
             maker.width.equalToSuperview().multipliedBy(0.4)
         }
+        labels.append(openTasksLabel)
+        openTasksLabel.addAction(UIAction(handler: { self.typeSelected(action: $0, type: .open) }), for: .touchUpInside)
     }
+    
+    private func typeSelected(action: UIAction, type: TaskType){
+        labels.forEach { $0.isSelected = $0 == (action.sender as! BadgeLabelView) }
+    }
+}
+
+enum TaskType{
+    case all
+    case open
+    case closed
 }

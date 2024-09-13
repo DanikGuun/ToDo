@@ -31,6 +31,7 @@ class BadgeLabelView: UIControl{
     }
     var selectedColor: UIColor = UIColor.systemBlue { didSet { self.tintColorDidChange() } }
     var unselectedColor: UIColor = UIColor.systemGray { didSet { self.tintColorDidChange() } }
+    override var isSelected: Bool { didSet { updateAppereance() } }
     
     private let label = UILabel()
     private let badgeLabel = UILabel()
@@ -53,6 +54,7 @@ class BadgeLabelView: UIControl{
     
     private func setup(){
         self.backgroundColor = .clear
+        
         self.addSubview(label)
         label.font = UIFont.systemFont(ofSize: 16, weight: .light)
         label.textAlignment = .center
@@ -72,13 +74,16 @@ class BadgeLabelView: UIControl{
         self.addAction(UIAction(handler: pressed(_:)), for: .touchUpInside)
         
         self.tintColor = unselectedColor
-        //бахнуть observe
     }
     
     //MARK: - Selection Handler
     
-    private func pressed(_ action: UIAction){
+    private func pressed(_ action: UIAction? = nil){
         self.isSelected.toggle()
+        updateAppereance()
+    }
+    
+    private func updateAppereance(){
         self.tintColor = self.isSelected ? selectedColor : unselectedColor
         self.label.font = UIFont.systemFont(ofSize: self.label.font.pointSize, weight: self.isSelected ? .regular : .light)
     }

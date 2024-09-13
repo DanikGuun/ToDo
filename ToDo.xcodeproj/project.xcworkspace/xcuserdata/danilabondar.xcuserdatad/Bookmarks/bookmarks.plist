@@ -10,15 +10,15 @@
 				<key>location-parameters</key>
 				<dict>
 					<key>EndingColumnNumber</key>
-					<string>34</string>
+					<string>0</string>
 					<key>EndingLineNumber</key>
-					<string>43</string>
+					<string>45</string>
 					<key>StartingColumnNumber</key>
-					<string>33</string>
+					<string>0</string>
 					<key>StartingLineNumber</key>
-					<string>43</string>
+					<string>44</string>
 					<key>Timestamp</key>
-					<string>747939381.231672</string>
+					<string>747943256.784525</string>
 				</dict>
 				<key>rebasable-url</key>
 				<dict>
@@ -34,15 +34,16 @@
 			<key>text-context</key>
 			<dict>
 				<key>focused</key>
-				<string>{</string>
+				<string>    override init(frame: CGRect) {
+</string>
 				<key>leading</key>
 				<string>    }
     
-    override init(frame: CGRect) </string>
+</string>
 				<key>trailing</key>
-				<string>
-        super.init(frame: frame)
+				<string>        super.init(frame: frame)
         setup()
+    }
 </string>
 			</dict>
 			<key>title</key>
