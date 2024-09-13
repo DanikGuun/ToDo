@@ -18,6 +18,7 @@
 		567ED3A62C92C33C00268E13 /* Task+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 567ED3A42C92C33C00268E13 /* Task+CoreDataProperties.swift */; };
 		567ED3A92C92C3B800268E13 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 567ED3A82C92C3B800268E13 /* CoreDataManager.swift */; };
 		567ED3AC2C92C72300268E13 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 567ED3AB2C92C72300268E13 /* SnapKit */; };
+		56A8C9D92C941D6700636444 /* Duepuntozero Pro Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 567ED3AD2C92C9C700268E13 /* Duepuntozero Pro Regular.otf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -33,6 +34,7 @@
 		567ED3A32C92C33C00268E13 /* Task+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Task+CoreDataClass.swift"; sourceTree = "<group>"; };
 		567ED3A42C92C33C00268E13 /* Task+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Task+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		567ED3A82C92C3B800268E13 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
+		567ED3AD2C92C9C700268E13 /* Duepuntozero Pro Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Duepuntozero Pro Regular.otf"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -70,6 +72,7 @@
 				560F69722C92206600D574F0 /* SceneDelegate.swift */,
 				560F69742C92206600D574F0 /* ViewController.swift */,
 				567ED3A72C92C34200268E13 /* CoreData */,
+				567ED3AE2C92C9CF00268E13 /* Fonts */,
 				560F69762C92206600D574F0 /* Main.storyboard */,
 				560F697C2C92206700D574F0 /* Assets.xcassets */,
 				560F697E2C92206700D574F0 /* LaunchScreen.storyboard */,
@@ -87,6 +90,14 @@
 				567ED3A82C92C3B800268E13 /* CoreDataManager.swift */,
 			);
 			path = CoreData;
+			sourceTree = "<group>";
+		};
+		567ED3AE2C92C9CF00268E13 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				567ED3AD2C92C9C700268E13 /* Duepuntozero Pro Regular.otf */,
+			);
+			path = Fonts;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -155,6 +166,7 @@
 			files = (
 				560F697D2C92206700D574F0 /* Assets.xcassets in Resources */,
 				560F69802C92206700D574F0 /* Base in Resources */,
+				56A8C9D92C941D6700636444 /* Duepuntozero Pro Regular.otf in Resources */,
 				560F69782C92206600D574F0 /* Base in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
