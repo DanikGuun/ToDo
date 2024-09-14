@@ -16,11 +16,13 @@
 		560F69802C92206700D574F0 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 560F697F2C92206700D574F0 /* Base */; };
 		561002E72C943D0300E18D2C /* BadgeLabelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 561002E62C943D0300E18D2C /* BadgeLabelView.swift */; };
 		564CE7C92C94A6A800576DED /* TaskTypeSelectorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 564CE7C82C94A6A800576DED /* TaskTypeSelectorView.swift */; };
-		567ED3A52C92C33C00268E13 /* Task+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 567ED3A32C92C33C00268E13 /* Task+CoreDataClass.swift */; };
-		567ED3A62C92C33C00268E13 /* Task+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 567ED3A42C92C33C00268E13 /* Task+CoreDataProperties.swift */; };
 		567ED3A92C92C3B800268E13 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 567ED3A82C92C3B800268E13 /* CoreDataManager.swift */; };
 		567ED3AC2C92C72300268E13 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 567ED3AB2C92C72300268E13 /* SnapKit */; };
 		56A8C9DC2C9427C200636444 /* ToDoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56A8C9DB2C9427C200636444 /* ToDoView.swift */; };
+		56D81C2E2C960B12005AF377 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56D81C2D2C960B12005AF377 /* Model.swift */; };
+		56D81C312C960DD0005AF377 /* TodoTask+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56D81C2F2C960DD0005AF377 /* TodoTask+CoreDataClass.swift */; };
+		56D81C322C960DD0005AF377 /* TodoTask+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56D81C302C960DD0005AF377 /* TodoTask+CoreDataProperties.swift */; };
+		56D81C342C960EED005AF377 /* initialTasks.json in Resources */ = {isa = PBXBuildFile; fileRef = 56D81C332C960EED005AF377 /* initialTasks.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -35,10 +37,12 @@
 		560F69812C92206700D574F0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		561002E62C943D0300E18D2C /* BadgeLabelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BadgeLabelView.swift; sourceTree = "<group>"; };
 		564CE7C82C94A6A800576DED /* TaskTypeSelectorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskTypeSelectorView.swift; sourceTree = "<group>"; };
-		567ED3A32C92C33C00268E13 /* Task+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Task+CoreDataClass.swift"; sourceTree = "<group>"; };
-		567ED3A42C92C33C00268E13 /* Task+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Task+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		567ED3A82C92C3B800268E13 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		56A8C9DB2C9427C200636444 /* ToDoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoView.swift; sourceTree = "<group>"; };
+		56D81C2D2C960B12005AF377 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
+		56D81C2F2C960DD0005AF377 /* TodoTask+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TodoTask+CoreDataClass.swift"; sourceTree = "<group>"; };
+		56D81C302C960DD0005AF377 /* TodoTask+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TodoTask+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		56D81C332C960EED005AF377 /* initialTasks.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = initialTasks.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -75,6 +79,7 @@
 				560F69702C92206600D574F0 /* AppDelegate.swift */,
 				560F69722C92206600D574F0 /* SceneDelegate.swift */,
 				560F69742C92206600D574F0 /* ViewController.swift */,
+				56D81C2D2C960B12005AF377 /* Model.swift */,
 				56A8C9DA2C94278B00636444 /* ToDoList */,
 				567ED3A72C92C34200268E13 /* CoreData */,
 				560F69762C92206600D574F0 /* Main.storyboard */,
@@ -82,6 +87,7 @@
 				560F697E2C92206700D574F0 /* LaunchScreen.storyboard */,
 				560F69812C92206700D574F0 /* Info.plist */,
 				560F69792C92206600D574F0 /* ToDo.xcdatamodeld */,
+				56D81C332C960EED005AF377 /* initialTasks.json */,
 			);
 			path = ToDo;
 			sourceTree = "<group>";
@@ -89,9 +95,9 @@
 		567ED3A72C92C34200268E13 /* CoreData */ = {
 			isa = PBXGroup;
 			children = (
-				567ED3A32C92C33C00268E13 /* Task+CoreDataClass.swift */,
-				567ED3A42C92C33C00268E13 /* Task+CoreDataProperties.swift */,
 				567ED3A82C92C3B800268E13 /* CoreDataManager.swift */,
+				56D81C2F2C960DD0005AF377 /* TodoTask+CoreDataClass.swift */,
+				56D81C302C960DD0005AF377 /* TodoTask+CoreDataProperties.swift */,
 			);
 			path = CoreData;
 			sourceTree = "<group>";
@@ -171,6 +177,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				560F697D2C92206700D574F0 /* Assets.xcassets in Resources */,
+				56D81C342C960EED005AF377 /* initialTasks.json in Resources */,
 				560F69802C92206700D574F0 /* Base in Resources */,
 				560F69782C92206600D574F0 /* Base in Resources */,
 			);
@@ -187,10 +194,11 @@
 				560F69712C92206600D574F0 /* AppDelegate.swift in Sources */,
 				56A8C9DC2C9427C200636444 /* ToDoView.swift in Sources */,
 				560F69732C92206600D574F0 /* SceneDelegate.swift in Sources */,
+				56D81C312C960DD0005AF377 /* TodoTask+CoreDataClass.swift in Sources */,
+				56D81C322C960DD0005AF377 /* TodoTask+CoreDataProperties.swift in Sources */,
 				564CE7C92C94A6A800576DED /* TaskTypeSelectorView.swift in Sources */,
-				567ED3A52C92C33C00268E13 /* Task+CoreDataClass.swift in Sources */,
 				561002E72C943D0300E18D2C /* BadgeLabelView.swift in Sources */,
-				567ED3A62C92C33C00268E13 /* Task+CoreDataProperties.swift in Sources */,
+				56D81C2E2C960B12005AF377 /* Model.swift in Sources */,
 				567ED3A92C92C3B800268E13 /* CoreDataManager.swift in Sources */,
 				560F697B2C92206600D574F0 /* ToDo.xcdatamodeld in Sources */,
 			);

@@ -10,6 +10,7 @@ import UIKit
 
 class TaskTypeSelectorView: UIView{
     
+    var delegate: TaskTypeSelectorDelegate?
     private var labels: [BadgeLabelView] = []
     
     convenience init(){
@@ -39,7 +40,7 @@ class TaskTypeSelectorView: UIView{
         }
         
         let closedTasksLabel = BadgeLabelView()
-        closedTasksLabel.labelText = "Готовые"
+        closedTasksLabel.labelText = "Сделать"
         closedTasksLabel.badgeCount = 1
         self.addSubview(closedTasksLabel)
         closedTasksLabel.snp.makeConstraints { maker in
@@ -48,10 +49,10 @@ class TaskTypeSelectorView: UIView{
             maker.width.equalToSuperview().multipliedBy(0.27)
         }
         labels.append(closedTasksLabel)
-        closedTasksLabel.addAction(UIAction(handler: { self.typeSelected(action: $0, type: .closed) }), for: .touchUpInside)
+        closedTasksLabel.addAction(UIAction(handler: { self.typeSelected(action: $0, type: .open) }), for: .touchUpInside)
         
         let openTasksLabel = BadgeLabelView()
-        openTasksLabel.labelText = "Завершенные"
+        openTasksLabel.labelText = "Готовые"
         openTasksLabel.badgeCount = 1
         self.addSubview(openTasksLabel)
         openTasksLabel.snp.makeConstraints { maker in
@@ -60,16 +61,21 @@ class TaskTypeSelectorView: UIView{
             maker.width.equalToSuperview().multipliedBy(0.4)
         }
         labels.append(openTasksLabel)
-        openTasksLabel.addAction(UIAction(handler: { self.typeSelected(action: $0, type: .open) }), for: .touchUpInside)
+        openTasksLabel.addAction(UIAction(handler: { self.typeSelected(action: $0, type: .closed) }), for: .touchUpInside)
     }
     
     private func typeSelected(action: UIAction, type: TaskType){
         labels.forEach { $0.isSelected = $0 == (action.sender as! BadgeLabelView) }
+        delegate?.selectType(type)
     }
 }
 
-enum TaskType{
-    case all
-    case open
-    case closed
+enum TaskType: Int{
+    case all = 0
+    case open = 1
+    case closed = 2
+}
+
+protocol TaskTypeSelectorDelegate{
+    func selectType(_ type: TaskType)
 }

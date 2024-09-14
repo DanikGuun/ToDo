@@ -13,18 +13,23 @@ var CDManager = CoreDataManager()
 class CoreDataManager{
     fileprivate init(){}
     
-    var persistentContainer: NSPersistentContainer {
-        let container = NSPersistentContainer(name: "ToSo")
+    func addTask(name: String, descritption: String, startDate: Date, endDate: Date, isDone: Bool){
+        let t = TodoTask(name: name, description: descritption, startDate: startDate, endDate: endDate, isDone: isDone)
+        self.saveContext()
+    }
+    
+    lazy var persistentContainer: NSPersistentContainer = {
+        let container = NSPersistentContainer(name: "ToDo")
         container.loadPersistentStores(completionHandler: {(description, error) in
             if let error = error{
                 fatalError(error.localizedDescription)
             }
         })
         return container
-    }
-    var context: NSManagedObjectContext {
+    }()
+    lazy var context: NSManagedObjectContext = {
         return persistentContainer.viewContext
-    }
+    }()
     
     func saveContext () {
         if context.hasChanges {
