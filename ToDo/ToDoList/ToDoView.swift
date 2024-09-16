@@ -52,6 +52,7 @@ class ToDoView: UIView, TaskTypeSelectorDelegate, NSFetchedResultsControllerDele
             if let item = try? CDManager.context.existingObject(with: id) as? TodoTask{
                 var conf = TaskCellConfiguration()
                 conf.name = item.name!
+                conf.isDone = item.isDone
                 cell?.contentConfiguration = conf
             }
             return cell

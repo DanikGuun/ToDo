@@ -10,8 +10,8 @@ import UIKit
 
 struct TaskCellConfiguration: UIContentConfiguration{
     
-    var name: String = "Задание..."
-    var description: String = "Описание"
+    var name: String = ""
+    var description: String = ""
     var startDate: Date = Date()
     var endDate: Date = Date()
     var isDone: Bool = false
