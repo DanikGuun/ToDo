@@ -19,6 +19,8 @@
 		56602FB52C97252C00CC036B /* TaskCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56602FB42C97252B00CC036B /* TaskCell.swift */; };
 		567E307A2C983E3700569DA6 /* TaskCellConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 567E30792C983E3700569DA6 /* TaskCellConfiguration.swift */; };
 		567E307C2C983E8800569DA6 /* TaskCellContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 567E307B2C983E8800569DA6 /* TaskCellContentView.swift */; };
+		567E308B2C98504E00569DA6 /* Bajazzo-NrXlt.otf in Resources */ = {isa = PBXBuildFile; fileRef = 567E30892C98504E00569DA6 /* Bajazzo-NrXlt.otf */; };
+		567E308D2C9850AC00569DA6 /* Bajazzo-Nr.otf in Resources */ = {isa = PBXBuildFile; fileRef = 567E308C2C9850AC00569DA6 /* Bajazzo-Nr.otf */; };
 		567ED3A92C92C3B800268E13 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 567ED3A82C92C3B800268E13 /* CoreDataManager.swift */; };
 		567ED3AC2C92C72300268E13 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 567ED3AB2C92C72300268E13 /* SnapKit */; };
 		56A8C9DC2C9427C200636444 /* ToDoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56A8C9DB2C9427C200636444 /* ToDoView.swift */; };
@@ -43,6 +45,8 @@
 		56602FB42C97252B00CC036B /* TaskCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskCell.swift; sourceTree = "<group>"; };
 		567E30792C983E3700569DA6 /* TaskCellConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskCellConfiguration.swift; sourceTree = "<group>"; };
 		567E307B2C983E8800569DA6 /* TaskCellContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskCellContentView.swift; sourceTree = "<group>"; };
+		567E30892C98504E00569DA6 /* Bajazzo-NrXlt.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Bajazzo-NrXlt.otf"; sourceTree = "<group>"; };
+		567E308C2C9850AC00569DA6 /* Bajazzo-Nr.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Bajazzo-Nr.otf"; sourceTree = "<group>"; };
 		567ED3A82C92C3B800268E13 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		56A8C9DB2C9427C200636444 /* ToDoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoView.swift; sourceTree = "<group>"; };
 		56D81C2D2C960B12005AF377 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
@@ -82,6 +86,7 @@
 		560F696F2C92206600D574F0 /* ToDo */ = {
 			isa = PBXGroup;
 			children = (
+				567E307E2C984BBC00569DA6 /* Fonts */,
 				560F69702C92206600D574F0 /* AppDelegate.swift */,
 				560F69722C92206600D574F0 /* SceneDelegate.swift */,
 				560F69742C92206600D574F0 /* ViewController.swift */,
@@ -105,6 +110,15 @@
 				567E307B2C983E8800569DA6 /* TaskCellContentView.swift */,
 			);
 			path = TableView;
+			sourceTree = "<group>";
+		};
+		567E307E2C984BBC00569DA6 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				567E308C2C9850AC00569DA6 /* Bajazzo-Nr.otf */,
+				567E30892C98504E00569DA6 /* Bajazzo-NrXlt.otf */,
+			);
+			path = Fonts;
 			sourceTree = "<group>";
 		};
 		567ED3A72C92C34200268E13 /* CoreData */ = {
@@ -193,9 +207,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				567E308B2C98504E00569DA6 /* Bajazzo-NrXlt.otf in Resources */,
 				560F697D2C92206700D574F0 /* Assets.xcassets in Resources */,
 				56D81C342C960EED005AF377 /* initialTasks.json in Resources */,
 				560F69802C92206700D574F0 /* Base in Resources */,
+				567E308D2C9850AC00569DA6 /* Bajazzo-Nr.otf in Resources */,
 				560F69782C92206600D574F0 /* Base in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
