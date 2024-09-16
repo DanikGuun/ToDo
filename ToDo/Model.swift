@@ -7,11 +7,12 @@
 
 import Foundation
 import UIKit
+import CoreData
 
 var AppData = Model()
 
 class Model{
     fileprivate init(){}
     
-    var allTasksDataSource: UITableViewDiffableDataSource<UUID, UUID>?
+    var tasksDataSource: UITableViewDiffableDataSource<UUID, NSManagedObjectID>?
 }

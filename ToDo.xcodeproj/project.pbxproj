@@ -16,6 +16,9 @@
 		560F69802C92206700D574F0 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 560F697F2C92206700D574F0 /* Base */; };
 		561002E72C943D0300E18D2C /* BadgeLabelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 561002E62C943D0300E18D2C /* BadgeLabelView.swift */; };
 		564CE7C92C94A6A800576DED /* TaskTypeSelectorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 564CE7C82C94A6A800576DED /* TaskTypeSelectorView.swift */; };
+		56602FB52C97252C00CC036B /* TaskCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56602FB42C97252B00CC036B /* TaskCell.swift */; };
+		567E307A2C983E3700569DA6 /* TaskCellConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 567E30792C983E3700569DA6 /* TaskCellConfiguration.swift */; };
+		567E307C2C983E8800569DA6 /* TaskCellContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 567E307B2C983E8800569DA6 /* TaskCellContentView.swift */; };
 		567ED3A92C92C3B800268E13 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 567ED3A82C92C3B800268E13 /* CoreDataManager.swift */; };
 		567ED3AC2C92C72300268E13 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 567ED3AB2C92C72300268E13 /* SnapKit */; };
 		56A8C9DC2C9427C200636444 /* ToDoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56A8C9DB2C9427C200636444 /* ToDoView.swift */; };
@@ -37,6 +40,9 @@
 		560F69812C92206700D574F0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		561002E62C943D0300E18D2C /* BadgeLabelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BadgeLabelView.swift; sourceTree = "<group>"; };
 		564CE7C82C94A6A800576DED /* TaskTypeSelectorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskTypeSelectorView.swift; sourceTree = "<group>"; };
+		56602FB42C97252B00CC036B /* TaskCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskCell.swift; sourceTree = "<group>"; };
+		567E30792C983E3700569DA6 /* TaskCellConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskCellConfiguration.swift; sourceTree = "<group>"; };
+		567E307B2C983E8800569DA6 /* TaskCellContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskCellContentView.swift; sourceTree = "<group>"; };
 		567ED3A82C92C3B800268E13 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		56A8C9DB2C9427C200636444 /* ToDoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoView.swift; sourceTree = "<group>"; };
 		56D81C2D2C960B12005AF377 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
@@ -86,10 +92,19 @@
 				560F697C2C92206700D574F0 /* Assets.xcassets */,
 				560F697E2C92206700D574F0 /* LaunchScreen.storyboard */,
 				560F69812C92206700D574F0 /* Info.plist */,
-				560F69792C92206600D574F0 /* ToDo.xcdatamodeld */,
 				56D81C332C960EED005AF377 /* initialTasks.json */,
 			);
 			path = ToDo;
+			sourceTree = "<group>";
+		};
+		567E30782C983E1000569DA6 /* TableView */ = {
+			isa = PBXGroup;
+			children = (
+				56602FB42C97252B00CC036B /* TaskCell.swift */,
+				567E30792C983E3700569DA6 /* TaskCellConfiguration.swift */,
+				567E307B2C983E8800569DA6 /* TaskCellContentView.swift */,
+			);
+			path = TableView;
 			sourceTree = "<group>";
 		};
 		567ED3A72C92C34200268E13 /* CoreData */ = {
@@ -98,6 +113,7 @@
 				567ED3A82C92C3B800268E13 /* CoreDataManager.swift */,
 				56D81C2F2C960DD0005AF377 /* TodoTask+CoreDataClass.swift */,
 				56D81C302C960DD0005AF377 /* TodoTask+CoreDataProperties.swift */,
+				560F69792C92206600D574F0 /* ToDo.xcdatamodeld */,
 			);
 			path = CoreData;
 			sourceTree = "<group>";
@@ -108,6 +124,7 @@
 				56A8C9DB2C9427C200636444 /* ToDoView.swift */,
 				561002E62C943D0300E18D2C /* BadgeLabelView.swift */,
 				564CE7C82C94A6A800576DED /* TaskTypeSelectorView.swift */,
+				567E30782C983E1000569DA6 /* TableView */,
 			);
 			path = ToDoList;
 			sourceTree = "<group>";
@@ -193,7 +210,10 @@
 				560F69752C92206600D574F0 /* ViewController.swift in Sources */,
 				560F69712C92206600D574F0 /* AppDelegate.swift in Sources */,
 				56A8C9DC2C9427C200636444 /* ToDoView.swift in Sources */,
+				567E307C2C983E8800569DA6 /* TaskCellContentView.swift in Sources */,
 				560F69732C92206600D574F0 /* SceneDelegate.swift in Sources */,
+				567E307A2C983E3700569DA6 /* TaskCellConfiguration.swift in Sources */,
+				56602FB52C97252C00CC036B /* TaskCell.swift in Sources */,
 				56D81C312C960DD0005AF377 /* TodoTask+CoreDataClass.swift in Sources */,
 				56D81C322C960DD0005AF377 /* TodoTask+CoreDataProperties.swift in Sources */,
 				564CE7C92C94A6A800576DED /* TaskTypeSelectorView.swift in Sources */,
