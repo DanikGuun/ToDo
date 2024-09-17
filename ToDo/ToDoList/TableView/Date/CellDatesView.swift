@@ -36,6 +36,12 @@ class CellDatesView: UIView{
         startTimeButton.snp.makeConstraints { maker in
             maker.edges.equalToSuperview()
         }
+        
+        let datePickerButton = DateButton()
+        self.addSubview(datePickerButton)
+        datePickerButton.snp.makeConstraints { maker in
+            maker.top.leading.bottom.equalToSuperview()
+        }
     }
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")

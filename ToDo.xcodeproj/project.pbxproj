@@ -20,7 +20,6 @@
 		567E307C2C983E8800569DA6 /* TaskCellContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 567E307B2C983E8800569DA6 /* TaskCellContentView.swift */; };
 		567E308B2C98504E00569DA6 /* Bajazzo-NrXlt.otf in Resources */ = {isa = PBXBuildFile; fileRef = 567E30892C98504E00569DA6 /* Bajazzo-NrXlt.otf */; };
 		567E308D2C9850AC00569DA6 /* Bajazzo-Nr.otf in Resources */ = {isa = PBXBuildFile; fileRef = 567E308C2C9850AC00569DA6 /* Bajazzo-Nr.otf */; };
-		567E308F2C98597900569DA6 /* DateCellSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 567E308E2C98597900569DA6 /* DateCellSection.swift */; };
 		567E30912C98640B00569DA6 /* SeparatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 567E30902C98640B00569DA6 /* SeparatorView.swift */; };
 		567E30932C98702300569DA6 /* CellDatesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 567E30922C98702300569DA6 /* CellDatesView.swift */; };
 		567E30952C99628100569DA6 /* TimePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 567E30942C99628100569DA6 /* TimePickerViewController.swift */; };
@@ -32,6 +31,8 @@
 		56D81C322C960DD0005AF377 /* TodoTask+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56D81C302C960DD0005AF377 /* TodoTask+CoreDataProperties.swift */; };
 		56D81C342C960EED005AF377 /* initialTasks.json in Resources */ = {isa = PBXBuildFile; fileRef = 56D81C332C960EED005AF377 /* initialTasks.json */; };
 		56E927F82C99D7EF004B7B32 /* TimeButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56E927F72C99D7EF004B7B32 /* TimeButton.swift */; };
+		56E927FA2C99F494004B7B32 /* DateButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56E927F92C99F494004B7B32 /* DateButton.swift */; };
+		56E927FD2C99F5AF004B7B32 /* DatePickerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56E927FC2C99F5AF004B7B32 /* DatePickerController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -50,7 +51,6 @@
 		567E307B2C983E8800569DA6 /* TaskCellContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskCellContentView.swift; sourceTree = "<group>"; };
 		567E30892C98504E00569DA6 /* Bajazzo-NrXlt.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Bajazzo-NrXlt.otf"; sourceTree = "<group>"; };
 		567E308C2C9850AC00569DA6 /* Bajazzo-Nr.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Bajazzo-Nr.otf"; sourceTree = "<group>"; };
-		567E308E2C98597900569DA6 /* DateCellSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateCellSection.swift; sourceTree = "<group>"; };
 		567E30902C98640B00569DA6 /* SeparatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeparatorView.swift; sourceTree = "<group>"; };
 		567E30922C98702300569DA6 /* CellDatesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellDatesView.swift; sourceTree = "<group>"; };
 		567E30942C99628100569DA6 /* TimePickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimePickerViewController.swift; sourceTree = "<group>"; };
@@ -61,6 +61,8 @@
 		56D81C302C960DD0005AF377 /* TodoTask+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TodoTask+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		56D81C332C960EED005AF377 /* initialTasks.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = initialTasks.json; sourceTree = "<group>"; };
 		56E927F72C99D7EF004B7B32 /* TimeButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeButton.swift; sourceTree = "<group>"; };
+		56E927F92C99F494004B7B32 /* DateButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateButton.swift; sourceTree = "<group>"; };
+		56E927FC2C99F5AF004B7B32 /* DatePickerController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePickerController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -115,11 +117,8 @@
 			children = (
 				567E30792C983E3700569DA6 /* TaskCellConfiguration.swift */,
 				567E307B2C983E8800569DA6 /* TaskCellContentView.swift */,
-				567E308E2C98597900569DA6 /* DateCellSection.swift */,
 				567E30902C98640B00569DA6 /* SeparatorView.swift */,
-				567E30922C98702300569DA6 /* CellDatesView.swift */,
-				567E30942C99628100569DA6 /* TimePickerViewController.swift */,
-				56E927F72C99D7EF004B7B32 /* TimeButton.swift */,
+				56E927FB2C99F4A0004B7B32 /* Date */,
 			);
 			path = TableView;
 			sourceTree = "<group>";
@@ -153,6 +152,18 @@
 				567E30782C983E1000569DA6 /* TableView */,
 			);
 			path = ToDoList;
+			sourceTree = "<group>";
+		};
+		56E927FB2C99F4A0004B7B32 /* Date */ = {
+			isa = PBXGroup;
+			children = (
+				567E30922C98702300569DA6 /* CellDatesView.swift */,
+				567E30942C99628100569DA6 /* TimePickerViewController.swift */,
+				56E927F72C99D7EF004B7B32 /* TimeButton.swift */,
+				56E927F92C99F494004B7B32 /* DateButton.swift */,
+				56E927FC2C99F5AF004B7B32 /* DatePickerController.swift */,
+			);
+			path = Date;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -236,12 +247,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				560F69752C92206600D574F0 /* ViewController.swift in Sources */,
-				567E308F2C98597900569DA6 /* DateCellSection.swift in Sources */,
 				560F69712C92206600D574F0 /* AppDelegate.swift in Sources */,
 				56A8C9DC2C9427C200636444 /* ToDoView.swift in Sources */,
 				567E307C2C983E8800569DA6 /* TaskCellContentView.swift in Sources */,
 				560F69732C92206600D574F0 /* SceneDelegate.swift in Sources */,
 				56E927F82C99D7EF004B7B32 /* TimeButton.swift in Sources */,
+				56E927FA2C99F494004B7B32 /* DateButton.swift in Sources */,
 				567E307A2C983E3700569DA6 /* TaskCellConfiguration.swift in Sources */,
 				567E30932C98702300569DA6 /* CellDatesView.swift in Sources */,
 				56D81C312C960DD0005AF377 /* TodoTask+CoreDataClass.swift in Sources */,
@@ -251,6 +262,7 @@
 				567E30952C99628100569DA6 /* TimePickerViewController.swift in Sources */,
 				561002E72C943D0300E18D2C /* BadgeLabelView.swift in Sources */,
 				56D81C2E2C960B12005AF377 /* Model.swift in Sources */,
+				56E927FD2C99F5AF004B7B32 /* DatePickerController.swift in Sources */,
 				567ED3A92C92C3B800268E13 /* CoreDataManager.swift in Sources */,
 				560F697B2C92206600D574F0 /* ToDo.xcdatamodeld in Sources */,
 			);

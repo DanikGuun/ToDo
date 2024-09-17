@@ -67,11 +67,10 @@ class TimeButton: UIButton, TimePickerViewDelegate{
     }
     
     func timePicker(pickedHours hours: Int, pickedMinutes minutes: Int) {
-        var comps = Calendar.current.dateComponents([.hour, .minute], from: date)
+        let comps = Calendar.current.dateComponents([.hour, .minute], from: date)
         let hourDif = Double((hours - (comps.hour ?? 0)) * 3600)
         let minuteDif = Double(( minutes - (comps.minute ?? 0)) * 60 )
         date = date.addingTimeInterval(hourDif + minuteDif)
         setTime(from: date)
-        print(date)
     }
 }
