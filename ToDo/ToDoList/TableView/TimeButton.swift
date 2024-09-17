@@ -10,8 +10,13 @@ import UIKit
 
 class TimeButton: UIButton, TimePickerViewDelegate{
     
-    private var hour: Int = 0
-    private var minute: Int = 0
+    var date = Date()
+    private var hour: Int {
+        Calendar.current.component(.hour, from: date)
+    }
+    private var minute: Int {
+        Calendar.current.component(.minute, from: date)
+    }
     
     private var viewController: UIViewController?{
         var responder: UIResponder? = self.next
@@ -55,21 +60,18 @@ class TimeButton: UIButton, TimePickerViewDelegate{
     
     //MARK: - Logic
     func setTime(from date: Date){
-        let comps = Calendar.current.dateComponents([.hour, .minute], from: date)
+        self.date = date
         var conf = self.configuration
-        conf?.title = "\(comps.hour ?? 0) : \(comps.minute ?? 0)"
+        conf?.title = date.formatted(.dateTime.hour().minute())
         self.configuration = conf
-        
-        self.hour = comps.hour ?? 0
-        self.minute = comps.minute ?? 0
     }
     
     func timePicker(pickedHours hours: Int, pickedMinutes minutes: Int) {
-        var conf = self.configuration
-        conf?.title = "\(hours) : \(minutes)"
-        self.configuration = conf
-        
-        self.hour = hours
-        self.minute = minutes
+        var comps = Calendar.current.dateComponents([.hour, .minute], from: date)
+        let hourDif = Double((hours - (comps.hour ?? 0)) * 3600)
+        let minuteDif = Double(( minutes - (comps.minute ?? 0)) * 60 )
+        date = date.addingTimeInterval(hourDif + minuteDif)
+        setTime(from: date)
+        print(date)
     }
 }

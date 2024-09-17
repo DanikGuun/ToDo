@@ -63,6 +63,7 @@ class ViewController: UIViewController, UIPopoverPresentationControllerDelegate 
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        print(1)
         if let controller = segue.destination as? TimePickerViewController{
             controller.popoverPresentationController?.delegate = self
             if let (sourceFrame, delegateView, startTime) = sender as? (CGRect, any TimePickerViewDelegate, DateComponents){
@@ -73,6 +74,7 @@ class ViewController: UIViewController, UIPopoverPresentationControllerDelegate 
         }
     }
 
+    
     func adaptivePresentationStyle(for controller: UIPresentationController) -> UIModalPresentationStyle {
         .none
     }

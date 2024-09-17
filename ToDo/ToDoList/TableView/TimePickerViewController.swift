@@ -50,7 +50,7 @@ class TimePickerViewController: UIViewController, UIPickerViewDataSource, UIPick
     }
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return row.description
+        return (row < 10 ? "0" : "") + row.description
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {

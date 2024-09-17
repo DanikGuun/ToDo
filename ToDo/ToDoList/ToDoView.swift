@@ -43,7 +43,7 @@ class ToDoView: UIView, TaskTypeSelectorDelegate, NSFetchedResultsControllerDele
             maker.top.equalTo(taskTypeStack.snp.bottom).offset(10)
             maker.bottom.equalTo(keyboardLayoutGuide.snp.top)
         }
-        tasksTableView.register(TaskCell.self, forCellReuseIdentifier: "cell")
+        tasksTableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
         tasksTableView.allowsSelection = false
         tasksTableView.rowHeight = UIScreen.main.bounds.height/7
         tasksTableView.backgroundColor = .clear
