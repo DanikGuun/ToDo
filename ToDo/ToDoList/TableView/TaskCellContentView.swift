@@ -61,7 +61,7 @@ class TaskCellContentView: UIView, UIContentView{
         isDoneButton.isSelected = conf.isDone
         isDoneButton.configurationUpdateHandler = { button in
             var conf = button.configuration
-            var imgConf = UIImage.SymbolConfiguration(pointSize: 18, weight: .semibold)
+            let imgConf = UIImage.SymbolConfiguration(pointSize: 18, weight: .semibold)
             let img = UIImage(systemName: button.isSelected ? "checkmark.circle.fill" : "circle")?.withTintColor(.systemBlue).withConfiguration(imgConf)
             conf?.image = img
             conf?.baseBackgroundColor = .clear

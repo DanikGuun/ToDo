@@ -65,8 +65,10 @@ class ViewController: UIViewController, UIPopoverPresentationControllerDelegate 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let controller = segue.destination as? TimePickerViewController{
             controller.popoverPresentationController?.delegate = self
-            if let frameSource = sender as? CGRect{
-                controller.popoverPresentationController?.sourceRect = frameSource
+            if let (sourceFrame, delegateView) = sender as? (CGRect, any TimePickerViewDelegate){
+                controller.popoverPresentationController?.sourceRect = sourceFrame
+                controller.
+                controller.delegate = delegateView
             }
         }
     }

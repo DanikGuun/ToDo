@@ -8,18 +8,7 @@
 import Foundation
 import UIKit
 
-class CellDatesView: UIView, UIPopoverPresentationControllerDelegate{
-
-    var viewController: UIViewController?{
-        var responder: UIResponder? = self.next
-        while responder != nil{
-            if let controller = responder as? UIViewController {
-                return controller
-            }
-            responder = responder?.next
-        }
-        return nil
-    }
+class CellDatesView: UIView, TimePickerViewDelegate{
     
     //Initialize
     convenience init() {
@@ -28,22 +17,28 @@ class CellDatesView: UIView, UIPopoverPresentationControllerDelegate{
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        let but = UIButton(configuration: .borderedProminent())
+        let but = UIButton(configuration: .plain())
         self.addSubview(but)
         but.setTitle("Press", for: .normal)
         but.snp.makeConstraints { maker in
-            maker.edges.equalToSuperview()
+            maker.top.bottom.leading.equalToSuperview()
         }
         but.addAction(UIAction(handler: { [unowned self] _ in
             let cell = self.superview!
-            let globalFrame = cell.convert(self.frame, to: nil)
-            viewController?.performSegue(withIdentifier: "showTimePickerSegue", sender: globalFrame)
+            let cellCoord = self.convert(but.frame, to: cell)
+            let globalFrame = cell.convert(cellCoord, to: nil)
+            viewController?.performSegue(withIdentifier: "showTimePickerSegue", sender: (globalFrame, self))
         }), for: .touchUpInside)
+        
+  
+        
     }
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    //Popover чтобы одинаково показывался на всех устройствах
-
+    func timePicker(pickedHours hours: Int, pickedMinutes minutes: Int) {
+        print(minutes)
+    }
+    
 }
