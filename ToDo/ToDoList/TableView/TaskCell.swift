@@ -10,6 +10,5 @@ import UIKit
 class TaskCell: UITableViewCell {
     override func updateConfiguration(using state: UICellConfigurationState) {
         super.updateConfiguration(using: state)
-        
     }
 }

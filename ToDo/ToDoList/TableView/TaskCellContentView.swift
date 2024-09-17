@@ -60,11 +60,15 @@ class TaskCellContentView: UIView, UIContentView{
         isDoneButton.tintColor = .systemBlue
         isDoneButton.isSelected = conf.isDone
         isDoneButton.configurationUpdateHandler = { button in
-            var conf = button.configuration
+            guard var conf = button.configuration else { return }
             let imgConf = UIImage.SymbolConfiguration(pointSize: 18, weight: .semibold)
             let img = UIImage(systemName: button.isSelected ? "checkmark.circle.fill" : "circle")?.withTintColor(.systemBlue).withConfiguration(imgConf)
-            conf?.image = img
-            conf?.baseBackgroundColor = .clear
+            conf.image = img
+            
+            var backConf = conf.background
+            backConf.backgroundColor = .clear
+            conf.background = backConf
+            
             button.configuration = conf
         }
         isDoneButton.snp.makeConstraints { maker in

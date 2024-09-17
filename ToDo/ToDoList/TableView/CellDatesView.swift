@@ -8,7 +8,20 @@
 import Foundation
 import UIKit
 
-class CellDatesView: UIView, TimePickerViewDelegate{
+class CellDatesView: UIView{
+
+    private var viewController: UIViewController?{
+        var responder: UIResponder? = self.next
+        while responder != nil{
+            if let controller = responder as? UIViewController {
+                return controller
+            }
+            responder = responder?.next
+        }
+        return nil
+    }
+    var startDate = Date()
+    var endDate = Date()
     
     //Initialize
     convenience init() {
@@ -17,28 +30,19 @@ class CellDatesView: UIView, TimePickerViewDelegate{
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        let but = UIButton(configuration: .plain())
-        self.addSubview(but)
-        but.setTitle("Press", for: .normal)
-        but.snp.makeConstraints { maker in
-            maker.top.bottom.leading.equalToSuperview()
+        let startTimeButton = TimeButton()
+        self.addSubview(startTimeButton)
+        startTimeButton.setTime(from: Date())
+        startTimeButton.snp.makeConstraints { maker in
+            maker.edges.equalToSuperview()
         }
-        but.addAction(UIAction(handler: { [unowned self] _ in
-            let cell = self.superview!
-            let cellCoord = self.convert(but.frame, to: cell)
-            let globalFrame = cell.convert(cellCoord, to: nil)
-            viewController?.performSegue(withIdentifier: "showTimePickerSegue", sender: (globalFrame, self))
-        }), for: .touchUpInside)
-        
-  
-        
     }
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
-    func timePicker(pickedHours hours: Int, pickedMinutes minutes: Int) {
-        print(minutes)
+
+    //Date Handling
+    func updateDate(){
+        
     }
-    
 }

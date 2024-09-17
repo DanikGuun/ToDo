@@ -11,6 +11,7 @@ import UIKit
 class TimePickerViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate{
     
     var delegate: TimePickerViewDelegate?
+    var startTime: DateComponents?
     
     //MARK: - Initialize
     override func viewDidLoad() {
@@ -31,6 +32,10 @@ class TimePickerViewController: UIViewController, UIPickerViewDataSource, UIPick
         dotLabel.text = ":"
         dotLabel.snp.makeConstraints { maker in
             maker.center.equalToSuperview()
+        }
+        if let startTime{
+            picker.selectRow(startTime.hour ?? 0, inComponent: 0, animated: true)
+            picker.selectRow(startTime.minute ?? 0, inComponent: 1, animated: true)
         }
     }
     
