@@ -17,6 +17,7 @@ class TaskCellContentView: UIView, UIContentView{
     var isDoneButton = UIButton(configuration: .plain())
     
     //MARK: - Initialize
+    
     init(configuration conf: TaskCellConfiguration) {
         self.configuration = conf
         super.init(frame: .zero)
@@ -25,7 +26,7 @@ class TaskCellContentView: UIView, UIContentView{
     }
     
     func createViews(){
-        
+
         let conf = configuration as! TaskCellConfiguration
         
         self.addSubview(nameField)
@@ -87,6 +88,16 @@ class TaskCellContentView: UIView, UIContentView{
             maker.leading.trailing.equalToSuperview().inset(30)
             maker.height.equalTo(separator.lineWidth)
         }
+        
+        //Даты
+        let datesView = CellDatesView()
+        self.addSubview(datesView)
+        datesView.snp.makeConstraints { maker in
+            maker.top.equalTo(separator.snp.bottom).offset(10)
+            maker.leading.trailing.equalToSuperview().inset(20)
+            maker.bottom.equalToSuperview().inset(5)
+        }
+        
     }
     
     required init?(coder: NSCoder) {

@@ -8,13 +8,12 @@
 import UIKit
 import SnapKit
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, UIPopoverPresentationControllerDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setup()        
     }
-    
     private func setup(){
         self.view.backgroundColor = .background
         //Today Tasks Label
@@ -54,6 +53,7 @@ class ViewController: UIViewController {
             maker.centerY.equalTo(todayTasksLabel.snp.bottom)
         }
         
+        //ToDo view
         let todoView = ToDoView()
         self.view.addSubview(todoView)
         todoView.snp.makeConstraints { maker in
@@ -61,6 +61,18 @@ class ViewController: UIViewController {
             maker.top.equalTo(todayDateLabel.snp.bottom).offset(15)
         }
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let controller = segue.destination as? TimePickerViewController{
+            controller.popoverPresentationController?.delegate = self
+            if let frameSource = sender as? CGRect{
+                controller.popoverPresentationController?.sourceRect = frameSource
+            }
+        }
+    }
 
+    func adaptivePresentationStyle(for controller: UIPresentationController) -> UIModalPresentationStyle {
+        .none
+    }
 }
 
