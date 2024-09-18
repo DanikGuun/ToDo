@@ -11,6 +11,8 @@ import UIKit
 class TimeButton: UIButton, TimePickerViewDelegate{
     
     var date = Date()
+    var minTime: DateComponents?
+    var type: TimeButtonType = .start
     private var hour: Int {
         Calendar.current.component(.hour, from: date)
     }
@@ -45,24 +47,25 @@ class TimeButton: UIButton, TimePickerViewDelegate{
     
     private func setup(){
         self.configuration = .plain()
-        self.addAction(UIAction(handler: { _ in
-            let cell = self.superview!.superview!
-            let cellCoord = self.convert(self.frame, to: cell)
-            let globalFrame = cell.convert(cellCoord, to: nil)
-            
+        self.addAction(UIAction(handler: { [unowned self] _ in
             var comps = DateComponents()
             comps.hour = self.hour
             comps.minute = self.minute
             
-            self.viewController?.performSegue(withIdentifier: "showTimePickerSegue", sender: (globalFrame, self, comps))
+            self.viewController?.performSegue(withIdentifier: "showTimePickerSegue", sender: (self, comps, minTime))
         }), for: .touchUpInside)
     }
     
     //MARK: - Logic
     func setTime(from date: Date){
-        self.date = date
+        var startText = ""
+        if self.type == .start { startText = "с " }
+        else if self.type == .end { startText = "до " }
+        var attributedTime = AttributedString(startText + date.formatted(.dateTime.hour().minute()))
+        attributedTime.font = UIFont.systemFont(ofSize: 14, weight: .regular)
+        attributedTime.foregroundColor = .systemGray3
         var conf = self.configuration
-        conf?.title = date.formatted(.dateTime.hour().minute())
+        conf?.attributedTitle = attributedTime
         self.configuration = conf
     }
     
@@ -73,4 +76,10 @@ class TimeButton: UIButton, TimePickerViewDelegate{
         date = date.addingTimeInterval(hourDif + minuteDif)
         setTime(from: date)
     }
+}
+
+enum TimeButtonType{
+    case start
+    case end
+    case none
 }

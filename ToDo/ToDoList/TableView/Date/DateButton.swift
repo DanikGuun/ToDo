@@ -44,11 +44,7 @@ class DateButton: UIButton, DatePickerDelegate{
         self.configuration = conf
         
         self.addAction(UIAction(handler: {_ in
-            let cell = self.superview!.superview!
-            let cellCoord = self.convert(self.frame, to: cell)
-            let globalFrame = cell.convert(cellCoord, to: nil)
-            
-            self.viewController?.performSegue(withIdentifier: "showDatePickerSegue", sender: (globalFrame, self, Date()))
+            self.viewController?.performSegue(withIdentifier: "showDatePickerSegue", sender: (self, Date()))
         }), for: .touchUpInside)
         
         if currentDate == nil{

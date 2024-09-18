@@ -12,6 +12,7 @@ class TimePickerViewController: UIViewController, UIPickerViewDataSource, UIPick
     
     var delegate: TimePickerViewDelegate?
     var startTime: DateComponents?
+    var minTime: DateComponents?
     
     //MARK: - Initialize
     override func viewDidLoad() {
@@ -52,8 +53,19 @@ class TimePickerViewController: UIViewController, UIPickerViewDataSource, UIPick
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         return (row < 10 ? "0" : "") + row.description
     }
-    
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        //выставляем ограничение
+        if component == 0{
+            if row <= minTime?.hour ?? 0 {
+                pickerView.selectRow(minTime?.hour ?? 0, inComponent: 0, animated: true)
+                
+                if pickerView.selectedRow(inComponent: 1) < minTime?.minute ?? 0 {
+                    pickerView.selectRow(minTime?.minute ?? 0, inComponent: 1, animated: true)
+                }
+            }
+        }
+
+        if pickerView.selectedRow(inComponent: 0) == minTime?.hour && component == 1 && row < minTime?.minute ?? 0 { pickerView.selectRow(minTime?.minute ?? 0, inComponent: 1, animated: true) }
         let hours = pickerView.selectedRow(inComponent: 0)
         let minutes = pickerView.selectedRow(inComponent: 1)
         delegate?.timePicker(pickedHours: hours, pickedMinutes: minutes)

@@ -63,19 +63,20 @@ class ViewController: UIViewController, UIPopoverPresentationControllerDelegate 
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        var sourceFrame = self.view.frame
+        var sourceView = UIView()
         
         if let controller = segue.destination as? TimePickerViewController{
-            if let (_sourceFrame, delegateView, startTime) = sender as? (CGRect, any TimePickerViewDelegate, DateComponents){
-                sourceFrame = _sourceFrame
+            if let (delegateView, startTime, minTime) = sender as? (any TimePickerViewDelegate, DateComponents, DateComponents?){
+                sourceView = delegateView as! UIView
                 controller.delegate = delegateView
                 controller.startTime = startTime
+                controller.minTime = minTime
             }
         }
         
         else if let controller = segue.destination as? DatePickerController{
-            if let (_sourceFrame, delegateView, startDate) = sender as? (CGRect, any DatePickerDelegate, Date){
-                sourceFrame = _sourceFrame
+            if let (delegateView, startDate) = sender as? (any DatePickerDelegate, Date){
+                sourceView = delegateView as! UIView
                 controller.delegate = delegateView
                 controller.startDate = startDate
             }
@@ -83,7 +84,8 @@ class ViewController: UIViewController, UIPopoverPresentationControllerDelegate 
         
         if let presentController = segue.destination.popoverPresentationController{
             presentController.delegate = self
-            presentController.sourceRect = sourceFrame
+            presentController.sourceView = sourceView
+            presentController.permittedArrowDirections = [.up, .down]
         }
     }
 
