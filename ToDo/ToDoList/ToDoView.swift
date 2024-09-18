@@ -43,21 +43,26 @@ class ToDoView: UIView, TaskTypeSelectorDelegate, NSFetchedResultsControllerDele
             maker.top.equalTo(taskTypeStack.snp.bottom).offset(10)
             maker.bottom.equalTo(keyboardLayoutGuide.snp.top)
         }
-        tasksTableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
+        tasksTableView.register(TaskCell.self, forCellReuseIdentifier: "cell")
         tasksTableView.allowsSelection = false
         tasksTableView.rowHeight = UIScreen.main.bounds.height/7
         tasksTableView.backgroundColor = .clear
         AppData.tasksDataSource = UITableViewDiffableDataSource<UUID, NSManagedObjectID>(tableView: tasksTableView, cellProvider: {(table, indexPath, id) in
-            let cell = table.dequeueReusableCell(withIdentifier: "cell")
+            let cell = table.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
             if let item = try? CDManager.context.existingObject(with: id) as? TodoTask{
                 var conf = TaskCellConfiguration()
                 conf.name = item.name!
+                conf.description = item.desription ?? ""
                 conf.isDone = item.isDone
-                cell?.contentConfiguration = conf
+                conf.startDate = item.startDate ?? Date()
+                conf.endDate = item.endDate ?? Date()
+                conf.item = item
+                cell.contentConfiguration = conf
             }
             return cell
             }
         )
+        tasksTableView.keyboardDismissMode = .onDrag
         try! fetchResultController.performFetch()
     }
     
@@ -71,5 +76,6 @@ class ToDoView: UIView, TaskTypeSelectorDelegate, NSFetchedResultsControllerDele
     func selectType(_ type: TaskType) {
 
     }
+    
 }
 

@@ -88,7 +88,6 @@ class ViewController: UIViewController, UIPopoverPresentationControllerDelegate 
             presentController.permittedArrowDirections = [.up, .down]
         }
     }
-
     
     func adaptivePresentationStyle(for controller: UIPresentationController) -> UIModalPresentationStyle {
         .none

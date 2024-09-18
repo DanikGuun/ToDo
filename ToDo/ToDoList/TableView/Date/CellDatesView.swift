@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-class CellDatesView: UIView{
+class CellDatesView: UIView, TimeButtonDelegate, DateButtonDelegate{
 
     private var viewController: UIViewController?{
         var responder: UIResponder? = self.next
@@ -20,8 +20,19 @@ class CellDatesView: UIView{
         }
         return nil
     }
-    var startDate = Date()
-    var endDate = Date()
+    var delegate: CellDatesViewDelegate?
+    
+    let datePickerButton = DateButton()
+    var startDate = Date() {
+        didSet {
+            startTimeButton.date = startDate
+            datePickerButton.currentDate = Calendar.current.dateComponents([.year, .month, .day], from: startDate)
+        }
+    }
+    var endDate = Date() { didSet { endTimeButton.date = endDate } }
+    
+    private let startTimeButton = TimeButton()
+    private let endTimeButton = TimeButton()
     
     //Initialize
     convenience init() {
@@ -29,35 +40,32 @@ class CellDatesView: UIView{
     }
     override init(frame: CGRect) {
         super.init(frame: frame)
-        
-        let datePickerButton = DateButton()
+    
+        datePickerButton.delegate = self
         self.addSubview(datePickerButton)
         datePickerButton.snp.makeConstraints { maker in
             maker.centerY.leading.equalToSuperview()
         }
         
-        let startTimeButton = TimeButton()
+        
         self.addSubview(startTimeButton)
         startTimeButton.type = .start
-        startTimeButton.setTime(from: Date())
+        startTimeButton.setTime(from: startDate)
+        startTimeButton.delegate = self
         startTimeButton.snp.makeConstraints { maker in
             maker.centerY.equalToSuperview()
             maker.leading.equalTo(datePickerButton.snp.trailing)
         }
         
-        let endTimeButton = TimeButton()
         self.addSubview(endTimeButton)
         endTimeButton.type = .end
-        endTimeButton.setTime(from: Date())
+        endTimeButton.setTime(from: endDate)
+        endTimeButton.delegate = self
         endTimeButton.snp.makeConstraints { maker in
             maker.centerY.equalToSuperview()
             maker.leading.equalTo(startTimeButton.snp.trailing)
         }
-        //Чтобы не заканчивалось раньше начинания
-        endTimeButton.addAction(UIAction(handler: {_ in
-            let comps = Calendar.current.dateComponents([.hour, .minute], from: startTimeButton.date)
-            endTimeButton.minTime = comps
-        }), for: .touchUpInside)
+        
         
         let timeSeparator = UILabel()
         self.addSubview(timeSeparator)
@@ -73,8 +81,33 @@ class CellDatesView: UIView{
         fatalError("init(coder:) has not been implemented")
     }
 
-    //Date Handling
-    func updateDate(){
-        
+    //Delegates
+    func timeButton(timeButton: TimeButton, selectedDate date: Date, type: TimeButtonType) {
+        if type == .start {
+            let comps = Calendar.current.dateComponents([.hour, .minute], from: date)
+            endTimeButton.minTime = comps
+            delegate?.cellDatesView(withStartDate: date)
+        }
+        else if type == .end { delegate?.cellDatesView(withEndDate: date) }
     }
+    func dateButton(pickDay date: DateComponents) {
+        var startComps = Calendar.current.dateComponents([.year, .month, .day, .hour, .minute, .second], from: self.startDate)
+        startComps.year = date.year
+        startComps.month = date.month
+        startComps.day = date.day
+        self.startDate = Calendar.current.date(from: startComps)!
+        delegate?.cellDatesView(withStartDate: self.startDate)
+        
+        var endComps = Calendar.current.dateComponents([.year, .month, .day, .hour, .minute, .second], from: self.startDate)
+        endComps.year = date.year
+        endComps.month = date.month
+        endComps.day = date.day
+        self.endDate = Calendar.current.date(from: endComps)!
+        delegate?.cellDatesView(withEndDate: self.endDate)
+    }
+}
+
+protocol CellDatesViewDelegate{
+    func cellDatesView(withStartDate date: Date)
+    func cellDatesView(withEndDate date: Date)
 }

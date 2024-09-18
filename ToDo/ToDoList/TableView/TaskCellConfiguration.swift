@@ -15,6 +15,7 @@ struct TaskCellConfiguration: UIContentConfiguration{
     var startDate: Date = Date()
     var endDate: Date = Date()
     var isDone: Bool = false
+    var item: TodoTask?
     
     func makeContentView() -> any UIView & UIContentView {
         return TaskCellContentView(configuration: self)

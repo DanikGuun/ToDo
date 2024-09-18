@@ -11,6 +11,7 @@ import UIKit
 class DateButton: UIButton, DatePickerDelegate{
     
     var currentDate: DateComponents? { didSet { setDateText(date: currentDate) } }
+    var delegate: DateButtonDelegate?
     private let todayDate: DateComponents = Calendar.current.dateComponents([.year, .month, .day], from: Date())
     
     private var viewController: UIViewController?{
@@ -76,5 +77,10 @@ class DateButton: UIButton, DatePickerDelegate{
     
     func pickDate(date: DateComponents) {
         setDateText(date: date)
+        currentDate = date
+        delegate?.dateButton(pickDay: date)
     }
+}
+protocol DateButtonDelegate{
+    func dateButton(pickDay date: DateComponents)
 }

@@ -16,6 +16,7 @@
 		560F69802C92206700D574F0 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 560F697F2C92206700D574F0 /* Base */; };
 		561002E72C943D0300E18D2C /* BadgeLabelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 561002E62C943D0300E18D2C /* BadgeLabelView.swift */; };
 		564CE7C92C94A6A800576DED /* TaskTypeSelectorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 564CE7C82C94A6A800576DED /* TaskTypeSelectorView.swift */; };
+		5679BF9B2C9B5C0C002AA33A /* TaskCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5679BF9A2C9B5C0C002AA33A /* TaskCell.swift */; };
 		567E307A2C983E3700569DA6 /* TaskCellConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 567E30792C983E3700569DA6 /* TaskCellConfiguration.swift */; };
 		567E307C2C983E8800569DA6 /* TaskCellContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 567E307B2C983E8800569DA6 /* TaskCellContentView.swift */; };
 		567E308B2C98504E00569DA6 /* Bajazzo-NrXlt.otf in Resources */ = {isa = PBXBuildFile; fileRef = 567E30892C98504E00569DA6 /* Bajazzo-NrXlt.otf */; };
@@ -48,6 +49,7 @@
 		560F69812C92206700D574F0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		561002E62C943D0300E18D2C /* BadgeLabelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BadgeLabelView.swift; sourceTree = "<group>"; };
 		564CE7C82C94A6A800576DED /* TaskTypeSelectorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskTypeSelectorView.swift; sourceTree = "<group>"; };
+		5679BF9A2C9B5C0C002AA33A /* TaskCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskCell.swift; sourceTree = "<group>"; };
 		567E30792C983E3700569DA6 /* TaskCellConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskCellConfiguration.swift; sourceTree = "<group>"; };
 		567E307B2C983E8800569DA6 /* TaskCellContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskCellContentView.swift; sourceTree = "<group>"; };
 		567E30892C98504E00569DA6 /* Bajazzo-NrXlt.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Bajazzo-NrXlt.otf"; sourceTree = "<group>"; };
@@ -120,6 +122,7 @@
 				567E30792C983E3700569DA6 /* TaskCellConfiguration.swift */,
 				567E307B2C983E8800569DA6 /* TaskCellContentView.swift */,
 				567E30902C98640B00569DA6 /* SeparatorView.swift */,
+				5679BF9A2C9B5C0C002AA33A /* TaskCell.swift */,
 				56E927FB2C99F4A0004B7B32 /* Date */,
 			);
 			path = TableView;
@@ -254,6 +257,7 @@
 				560F69712C92206600D574F0 /* AppDelegate.swift in Sources */,
 				56A8C9DC2C9427C200636444 /* ToDoView.swift in Sources */,
 				567E307C2C983E8800569DA6 /* TaskCellContentView.swift in Sources */,
+				5679BF9B2C9B5C0C002AA33A /* TaskCell.swift in Sources */,
 				560F69732C92206600D574F0 /* SceneDelegate.swift in Sources */,
 				56E927F82C99D7EF004B7B32 /* TimeButton.swift in Sources */,
 				56E927FA2C99F494004B7B32 /* DateButton.swift in Sources */,
