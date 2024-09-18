@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-class DatePickerController: UIViewController{
+class DatePickerController: UIViewController, UICalendarViewDelegate, UICalendarSelectionSingleDateDelegate{
     
     var delegate: DatePickerDelegate?
     var startDate = Date()
@@ -21,9 +21,18 @@ class DatePickerController: UIViewController{
         picker.snp.makeConstraints { maker in
             maker.edges.equalToSuperview()
         }
+        let comps = Calendar.current.dateComponents([.year, .month, .day], from: startDate)
+        picker.setVisibleDateComponents(comps, animated: true)
+        picker.delegate = self
+        picker.selectionBehavior = UICalendarSelectionSingleDate(delegate: self)
     }
+    
+    func dateSelection(_ selection: UICalendarSelectionSingleDate, didSelectDate dateComponents: DateComponents?) {
+        if let dateComponents { delegate?.pickDate(date: dateComponents) }
+    }
+    
 }
 
 protocol DatePickerDelegate{
-    
+    func pickDate(date: DateComponents)
 }

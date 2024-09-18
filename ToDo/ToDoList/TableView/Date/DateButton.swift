@@ -10,6 +10,9 @@ import UIKit
 
 class DateButton: UIButton, DatePickerDelegate{
     
+    var currentDate: DateComponents? { didSet { setDateText(date: currentDate) } }
+    private let todayDate: DateComponents = Calendar.current.dateComponents([.year, .month, .day], from: Date())
+    
     private var viewController: UIViewController?{
         var responder: UIResponder? = self.next
         while responder != nil{
@@ -21,6 +24,7 @@ class DateButton: UIButton, DatePickerDelegate{
         return nil
     }
     
+    //MARK: - Initialize
     convenience init(){
         self.init(frame: .zero)
         setup()
@@ -37,12 +41,8 @@ class DateButton: UIButton, DatePickerDelegate{
     private func setup(){
         self.configuration = .plain()
         var conf = self.configuration
-        var str = AttributedString("Title")
-        str.foregroundColor = UIColor.systemRed
-        str.font = UIFont.systemFont(ofSize: 18, weight: .heavy)
-        conf?.attributedTitle = str
         self.configuration = conf
-    
+        
         self.addAction(UIAction(handler: {_ in
             let cell = self.superview!.superview!
             let cellCoord = self.convert(self.frame, to: cell)
@@ -50,5 +50,35 @@ class DateButton: UIButton, DatePickerDelegate{
             
             self.viewController?.performSegue(withIdentifier: "showDatePickerSegue", sender: (globalFrame, self, Date()))
         }), for: .touchUpInside)
+        
+        if currentDate == nil{
+           currentDate = Calendar.current.dateComponents([.year, .month, .day], from: Date())
+        }
+    }
+    //MARK: - Logic
+    
+    func setDateText(date: DateComponents?){
+        if let date{
+            var text = ""
+            if date.month == todayDate.month && date.year == todayDate.year{
+                if date.day == todayDate.day { text = "Сегодня" }
+                else if date.day == (todayDate.day ?? 0) + 1 { text = "Завтра" }
+                else if date.day == (todayDate.day ?? 0) - 1 { text = "Вчера" }
+                else{
+                    text = Calendar.current.date(from: date)?.formatted(.dateTime.day(.twoDigits).month(.twoDigits).year()) ?? "fas"
+                }
+            }
+            var attributedString = AttributedString(text)
+            attributedString.font = UIFont(name: "Bajazzo-Md", size: 16)
+            attributedString.foregroundColor = .systemGray
+            
+            var conf = self.configuration
+            conf?.attributedTitle = attributedString
+            self.configuration = conf
+        }
+    }
+    
+    func pickDate(date: DateComponents) {
+        setDateText(date: date)
     }
 }

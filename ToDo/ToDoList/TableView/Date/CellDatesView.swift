@@ -30,18 +30,20 @@ class CellDatesView: UIView{
     override init(frame: CGRect) {
         super.init(frame: frame)
         
+        let datePickerButton = DateButton()
+        self.addSubview(datePickerButton)
+        datePickerButton.snp.makeConstraints { maker in
+            maker.centerY.leading.equalToSuperview()
+        }
+        
         let startTimeButton = TimeButton()
         self.addSubview(startTimeButton)
         startTimeButton.setTime(from: Date())
         startTimeButton.snp.makeConstraints { maker in
-            maker.edges.equalToSuperview()
+            maker.centerY.equalToSuperview()
+            maker.leading.equalTo(datePickerButton.snp.trailing)
         }
         
-        let datePickerButton = DateButton()
-        self.addSubview(datePickerButton)
-        datePickerButton.snp.makeConstraints { maker in
-            maker.top.leading.bottom.equalToSuperview()
-        }
     }
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")

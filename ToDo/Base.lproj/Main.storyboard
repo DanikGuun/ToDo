@@ -66,7 +66,7 @@
                         <viewLayoutGuide key="safeArea" id="rZ0-TN-PIv"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
-                    <value key="contentSizeForViewInPopover" type="size" width="300" height="328"/>
+                    <value key="contentSizeForViewInPopover" type="size" width="300" height="340"/>
                     <size key="freeformSize" width="300" height="328"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DTT-cJ-yfw" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

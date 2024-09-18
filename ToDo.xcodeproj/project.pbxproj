@@ -33,6 +33,7 @@
 		56E927F82C99D7EF004B7B32 /* TimeButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56E927F72C99D7EF004B7B32 /* TimeButton.swift */; };
 		56E927FA2C99F494004B7B32 /* DateButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56E927F92C99F494004B7B32 /* DateButton.swift */; };
 		56E927FD2C99F5AF004B7B32 /* DatePickerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56E927FC2C99F5AF004B7B32 /* DatePickerController.swift */; };
+		56E928012C9AA6E9004B7B32 /* Bajazzo-Md.otf in Resources */ = {isa = PBXBuildFile; fileRef = 56E928002C9AA6E9004B7B32 /* Bajazzo-Md.otf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -63,6 +64,7 @@
 		56E927F72C99D7EF004B7B32 /* TimeButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeButton.swift; sourceTree = "<group>"; };
 		56E927F92C99F494004B7B32 /* DateButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateButton.swift; sourceTree = "<group>"; };
 		56E927FC2C99F5AF004B7B32 /* DatePickerController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePickerController.swift; sourceTree = "<group>"; };
+		56E928002C9AA6E9004B7B32 /* Bajazzo-Md.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Bajazzo-Md.otf"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -126,6 +128,7 @@
 		567E307E2C984BBC00569DA6 /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
+				56E928002C9AA6E9004B7B32 /* Bajazzo-Md.otf */,
 				567E308C2C9850AC00569DA6 /* Bajazzo-Nr.otf */,
 				567E30892C98504E00569DA6 /* Bajazzo-NrXlt.otf */,
 			);
@@ -233,6 +236,7 @@
 				567E308B2C98504E00569DA6 /* Bajazzo-NrXlt.otf in Resources */,
 				560F697D2C92206700D574F0 /* Assets.xcassets in Resources */,
 				56D81C342C960EED005AF377 /* initialTasks.json in Resources */,
+				56E928012C9AA6E9004B7B32 /* Bajazzo-Md.otf in Resources */,
 				560F69802C92206700D574F0 /* Base in Resources */,
 				567E308D2C9850AC00569DA6 /* Bajazzo-Nr.otf in Resources */,
 				560F69782C92206600D574F0 /* Base in Resources */,

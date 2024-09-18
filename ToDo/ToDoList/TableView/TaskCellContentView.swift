@@ -97,7 +97,7 @@ class TaskCellContentView: UIView, UIContentView{
         let datesView = CellDatesView()
         self.addSubview(datesView)
         datesView.snp.makeConstraints { maker in
-            maker.top.equalTo(separator.snp.bottom).offset(10)
+            maker.top.equalTo(separator.snp.bottom)
             maker.leading.trailing.equalToSuperview().inset(20)
             maker.bottom.equalToSuperview().inset(5)
         }
