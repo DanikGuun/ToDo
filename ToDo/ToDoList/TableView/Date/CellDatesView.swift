@@ -27,6 +27,7 @@ class CellDatesView: UIView, TimeButtonDelegate, DateButtonDelegate{
         didSet {
             startTimeButton.date = startDate
             datePickerButton.currentDate = Calendar.current.dateComponents([.year, .month, .day], from: startDate)
+            endTimeButton.minTime = Calendar.current.dateComponents([.hour, .minute], from: startDate)
         }
     }
     var endDate = Date() { didSet { endTimeButton.date = endDate } }

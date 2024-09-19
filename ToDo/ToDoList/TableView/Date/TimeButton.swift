@@ -10,8 +10,22 @@ import UIKit
 
 class TimeButton: UIButton, TimePickerViewDelegate{
     
+    private var wasInitialMinDate = false //костыль, потому что при инициализации оно лезет сохранять, хотя не надо
+    
     var date = Date() { didSet { setTime(from: date) } }
-    var minTime: DateComponents? 
+    var minTime: DateComponents? { didSet {
+        if wasInitialMinDate{
+            let hourDif = Double(((minTime?.hour ?? 0) - hour) * 3600)
+            let minuteDif = Double(((minTime?.minute ?? 0) - minute) * 60)
+            let minDate = date.addingTimeInterval(hourDif + minuteDif)
+            
+            if minDate > date{
+                date = minDate
+                delegate?.timeButton(timeButton: self, selectedDate: date, type: type)
+            }
+        }
+        wasInitialMinDate = true
+    } }
     var delegate: TimeButtonDelegate?
     var type: TimeButtonType = .start
     private var hour: Int {

@@ -28,7 +28,7 @@ class ViewController: UIViewController, UIPopoverPresentationControllerDelegate 
         //Today Date Label
         let todayDateLabel = UILabel()
         self.view.addSubview(todayDateLabel)
-        todayDateLabel.text = Date().formatted(.dateTime.weekday(.wide).day().month(.wide))
+        todayDateLabel.text = Date().formatted(.dateTime.weekday(.wide).day().month(.wide).locale(Locale(identifier: "ru_RU")))
         todayDateLabel.font = UIFont.systemFont(ofSize: 16, weight: .regular)
         todayDateLabel.textColor = .secondaryLabel
         todayDateLabel.snp.makeConstraints { maker in
