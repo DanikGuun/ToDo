@@ -8,7 +8,7 @@
 import UIKit
 
 class TaskCell: UITableViewCell {
-
+    
     override func updateConfiguration(using state: UICellConfigurationState) {
         guard let conf = self.contentConfiguration as? TaskCellConfiguration else { return }
         guard let contentView = self.contentView as? TaskCellContentView else { return }

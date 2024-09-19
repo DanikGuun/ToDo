@@ -8,7 +8,7 @@
 import UIKit
 import CoreData
 
-class ToDoView: UIView, TaskTypeSelectorDelegate, NSFetchedResultsControllerDelegate {
+class ToDoView: UIView, TaskTypeSelectorDelegate, NSFetchedResultsControllerDelegate, UITableViewDelegate {
 
     private var taskTypeStack = TaskTypeSelectorView()
     private var tasksTableView = UITableView(frame: .zero, style: .insetGrouped)
@@ -47,6 +47,8 @@ class ToDoView: UIView, TaskTypeSelectorDelegate, NSFetchedResultsControllerDele
         tasksTableView.allowsSelection = false
         tasksTableView.rowHeight = UIScreen.main.bounds.height/7
         tasksTableView.backgroundColor = .clear
+        tasksTableView.showsVerticalScrollIndicator = false
+        tasksTableView.delegate = self
         AppData.tasksDataSource = UITableViewDiffableDataSource<UUID, NSManagedObjectID>(tableView: tasksTableView, cellProvider: {(table, indexPath, id) in
             let cell = table.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
             if let item = try? CDManager.context.existingObject(with: id) as? TodoTask{
@@ -71,6 +73,24 @@ class ToDoView: UIView, TaskTypeSelectorDelegate, NSFetchedResultsControllerDele
         AppData.tasksDataSource?.apply(snapshot as NSDiffableDataSourceSnapshot<UUID, NSManagedObjectID>)
     }
     
+    //MARK: - TableView Delegate
+    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        let act = UIContextualAction(style: .destructive, title: "Удалить", handler: { (action, view, allow) in
+            
+            guard let cell = tableView.cellForRow(at: indexPath) as? TaskCell,
+                  let conf = cell.contentConfiguration as? TaskCellConfiguration,
+                  let item = conf.item
+            else { allow(false); return }
+            CDManager.context.delete(item)
+//            var snapshot = AppData.tasksDataSource?.snapshot()
+//            snapshot?.deleteItems([conf.item!.objectID])
+//            AppData.tasksDataSource?.apply(snapshot!)
+            
+            allow(true)
+        })
+        act.image = UIImage(systemName: "trash")
+        return UISwipeActionsConfiguration(actions: [act])
+    }
     
     //MARK: - Task Type Delegate
     func selectType(_ type: TaskType) {

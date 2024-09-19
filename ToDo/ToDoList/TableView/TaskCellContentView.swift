@@ -100,8 +100,6 @@ class TaskCellContentView: UIView, UIContentView, UITextFieldDelegate, CellDates
             attributedName.strikethroughStyle = isDoneButton.isSelected ? NSUnderlineStyle.single : nil
             nameField.attributedText = NSAttributedString(attributedName)
             item?.isDone = isDoneButton.isSelected
-        
-            CDManager.saveContext()
         }), for: .touchUpInside)
         
         //Разделитель
@@ -137,16 +135,13 @@ class TaskCellContentView: UIView, UIContentView, UITextFieldDelegate, CellDates
     }
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
-        CDManager.saveContext()
         return true
     }
     //Time
     func cellDatesView(withStartDate date: Date) {
         item?.startDate = date
-        CDManager.saveContext()
     }
     func cellDatesView(withEndDate date: Date) {
         item?.endDate = date
-        CDManager.saveContext()
     }
 }
