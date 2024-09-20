@@ -52,6 +52,9 @@ class ViewController: UIViewController, UIPopoverPresentationControllerDelegate 
             maker.trailing.equalToSuperview().inset(15)
             maker.centerY.equalTo(todayTasksLabel.snp.bottom)
         }
+        addTaskButton.addAction(UIAction(handler: { _ in
+            CDManager.addTask(name: "", descritption: "", startDate: Date(), endDate: Date(), isDone: false)
+        }), for: .touchUpInside)
         
         //ToDo view
         let todoView = ToDoView()

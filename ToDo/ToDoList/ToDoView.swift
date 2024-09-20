@@ -10,12 +10,14 @@ import CoreData
 
 class ToDoView: UIView, TaskTypeSelectorDelegate, NSFetchedResultsControllerDelegate, UITableViewDelegate {
 
-    private var taskTypeStack = TaskTypeSelectorView()
+    var taskTypeStack = TaskTypeSelectorView()
     private var tasksTableView = UITableView(frame: .zero, style: .insetGrouped)
     private var selectedType: TaskType = .all
     private lazy var fetchResultController: NSFetchedResultsController<TodoTask> = {
+        let dateSort = NSSortDescriptor(key: "startDate", ascending: false)
+        let isDoneSort = NSSortDescriptor(key: "isDone", ascending: true)
         let request = TodoTask.fetchRequest()
-        request.sortDescriptors = [NSSortDescriptor(key: "objectID", ascending: true)]
+        request.sortDescriptors = [isDoneSort, dateSort]
         let controller = NSFetchedResultsController(fetchRequest: request, managedObjectContext: CDManager.context, sectionNameKeyPath: "objectID", cacheName: nil)
         controller.delegate = self
         return controller
@@ -70,7 +72,18 @@ class ToDoView: UIView, TaskTypeSelectorDelegate, NSFetchedResultsControllerDele
     
     //MARK: - All Tasks Table
     func controller(_ controller: NSFetchedResultsController<any NSFetchRequestResult>, didChangeContentWith snapshot: NSDiffableDataSourceSnapshotReference) {
-        AppData.tasksDataSource?.apply(snapshot as NSDiffableDataSourceSnapshot<UUID, NSManagedObjectID>)
+        AppData.tasksDataSource?.apply(snapshot as NSDiffableDataSourceSnapshot<UUID, NSManagedObjectID>, animatingDifferences: true)
+        
+        //Updating Categories Badge Labels
+        let request = TodoTask.fetchRequest()
+        request.predicate = NSPredicate(format: "isDone = false")
+        let openTasksCount = (try? CDManager.context.count(for: request)) ?? 0
+        request.predicate = NSPredicate(format: "isDone = true")
+        let closedTasksCount = (try? CDManager.context.count(for: request)) ?? 0
+        
+        taskTypeStack.setBadgeForType(openTasksCount + closedTasksCount, for: .all)
+        taskTypeStack.setBadgeForType(openTasksCount, for: .open)
+        taskTypeStack.setBadgeForType(closedTasksCount, for: .closed)
     }
     
     //MARK: - TableView Delegate
@@ -82,9 +95,6 @@ class ToDoView: UIView, TaskTypeSelectorDelegate, NSFetchedResultsControllerDele
                   let item = conf.item
             else { allow(false); return }
             CDManager.context.delete(item)
-//            var snapshot = AppData.tasksDataSource?.snapshot()
-//            snapshot?.deleteItems([conf.item!.objectID])
-//            AppData.tasksDataSource?.apply(snapshot!)
             
             allow(true)
         })
@@ -94,7 +104,15 @@ class ToDoView: UIView, TaskTypeSelectorDelegate, NSFetchedResultsControllerDele
     
     //MARK: - Task Type Delegate
     func selectType(_ type: TaskType) {
-
+        switch type {
+        case .all:
+            fetchResultController.fetchRequest.predicate = nil
+        case .open:
+            fetchResultController.fetchRequest.predicate = NSPredicate(format: "isDone = false")
+        case .closed:
+            fetchResultController.fetchRequest.predicate = NSPredicate(format: "isDone = true")
+        }
+        try? fetchResultController.performFetch()
     }
     
 }
