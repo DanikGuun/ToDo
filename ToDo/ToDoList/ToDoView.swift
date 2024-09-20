@@ -72,7 +72,21 @@ class ToDoView: UIView, TaskTypeSelectorDelegate, NSFetchedResultsControllerDele
     
     //MARK: - All Tasks Table
     func controller(_ controller: NSFetchedResultsController<any NSFetchRequestResult>, didChangeContentWith snapshot: NSDiffableDataSourceSnapshotReference) {
+        
+        var snapshot = snapshot as NSDiffableDataSourceSnapshot<UUID, NSManagedObjectID>
+        let currentSnapshot = AppData.tasksDataSource?.snapshot()
+        let reloadIdentifires: [NSManagedObjectID] = snapshot.itemIdentifiers.compactMap { id in
+            guard let currentIndex = currentSnapshot?.indexOfItem(id),
+                  let index = snapshot.indexOfItem(id),
+                  currentIndex == index
+            else { return nil }
+            guard let exitnigObject = try? controller.managedObjectContext.existingObject(with: id), exitnigObject.isUpdated else { return nil}
+            return id
+        }
+        snapshot.reloadItems(reloadIdentifires)
         AppData.tasksDataSource?.apply(snapshot as NSDiffableDataSourceSnapshot<UUID, NSManagedObjectID>, animatingDifferences: true)
+        
+        
         
         //Updating Categories Badge Labels
         let request = TodoTask.fetchRequest()

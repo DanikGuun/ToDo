@@ -16,7 +16,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         //добавляем стартовые операции, если их еще нет
-        print(UserDefaults.standard.bool(forKey: "isInitialTaskLoaded"))
         if UserDefaults.standard.bool(forKey: "isInitialTaskLoaded") == false{
             Task(priority: .high, operation: {
                 let stringURL = Bundle.main.path(forResource: "initialTasks", ofType: "json")!

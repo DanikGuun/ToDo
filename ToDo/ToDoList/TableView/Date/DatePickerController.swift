@@ -29,6 +29,7 @@ class DatePickerController: UIViewController, UICalendarViewDelegate, UICalendar
     
     func dateSelection(_ selection: UICalendarSelectionSingleDate, didSelectDate dateComponents: DateComponents?) {
         if let dateComponents { delegate?.pickDate(date: dateComponents) }
+        dismiss(animated: true)
     }
     
 }
